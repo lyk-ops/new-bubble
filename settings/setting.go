@@ -6,8 +6,8 @@ var Conf = new(AppConfig)
 
 // AppConfig 应用程序配置
 type AppConfig struct {
-	Release      bool `json:"release"`
-	Port         int  `json:"port"`
+	Release      bool `ini:"release"`
+	Port         int  `ini:"port"`
 	*MysqlConfig `ini:"mysql"`
 }
 type MysqlConfig struct {

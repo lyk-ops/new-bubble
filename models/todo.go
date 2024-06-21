@@ -34,8 +34,8 @@ func GetATodo(id string) (todo *Todo, err error) {
 }
 
 // UpdateTodo
-func UpdateTodo(todo *Todo) error {
-	err := dao.DB.Save(&todo).Error
+func UpdateTodo(todo *Todo) (err error) {
+	err = dao.DB.Save(&todo).Error
 	return err
 }
 

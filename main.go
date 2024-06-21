@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"new-bubble/dao"
 	"new-bubble/models"
+	"new-bubble/routers"
 	"new-bubble/settings"
 	"os"
 )
@@ -33,4 +34,9 @@ func main() {
 	// 创建表
 	dao.DB.AutoMigrate(&models.Todo{})
 	defer dao.Close() // 程序退出关闭数据库连接
+	// 注册路由
+	r := routers.SetupRouter()
+	if err := r.Run(fmt.Sprintf(":%d", settings.Conf.Port)); err != nil {
+		fmt.Printf("server startup failed, err:%v\n", err)
+	}
 }
